@@ -1,25 +1,29 @@
 package stepdefinations;
 
+import java.io.FileNotFoundException;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Properties;
+
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 
-import com.factory.DriverFactory;
-import com.hooks.MyHooks;
 import com.pages.LoginPage;
+import com.utils.FertchDataFromMySQL;
+import com.utils.PropertiesUtils;
 
-import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class LoginSteps{
+public class LoginSteps {
 
-	
-	 private WebDriver driver;
-	 private LoginPage loginpage;
-	
-	
+	private WebDriver driver;
+	private LoginPage loginpage;
+	private FertchDataFromMySQL getsql;
+	private Properties prop;
+	private Map<String, String> dbuserpwdValue;
 
 	@Given("Navigate to login page")
 	public void navigate_to_login_page() {
@@ -30,7 +34,7 @@ public class LoginSteps{
 	@When("User enters the valid email address {string} into email text field")
 	public void user_enters_the_valid_email_address_into_email_text_field(String email) {
 
- 		loginpage.enterEmail(email);
+		loginpage.enterEmail(email);
 
 	}
 
@@ -75,5 +79,58 @@ public class LoginSteps{
 		loginpage.clickOnSubmitBtn();
 
 	}
+
+	@Given("I have a valid database connection with {string} {string} {string} {string}")
+	public void I_have_a_valid_database_connection(String user, String password, String account, String query)
+			throws FileNotFoundException {
+		getsql = new FertchDataFromMySQL();
+		prop = PropertiesUtils.readProperties();
+		dbuserpwdValue = getsql.connectDB(prop.getProperty("user"), prop.getProperty("password"),
+				prop.getProperty("account"), prop.getProperty("query"));
+
+	}
+
+	@And("enter the fetched {string} and {string} in login page")
+	public void enter_the_fetched_user_and_password_in_login_page(String usernameKey, String passwordKey) {
+
+		loginpage.enterEmail(usernameKey);
+		loginpage.enterPassword(passwordKey);
+	}
+
+	@And("enter the fetched {string} and {string} in login page and check the login status")
+	public void enter_the_fetched_user_and_password_in_login_page_and_check_the_login_status(String usernameKey,
+			String passwordKey) {
+
+		for (Entry<String, String> entry : dbuserpwdValue.entrySet()) {
+
+			String userNameKey = entry.getKey();
+			String passwordKey1 = entry.getValue();
+
+			try {
+				System.out.println(userNameKey);
+				System.out.println(passwordKey1);
+
+				loginpage.enterEmail(userNameKey);
+				loginpage.enterPassword(passwordKey1);
+				loginpage.clickOnSubmitBtn();
+				Thread.sleep(5000);
+
+				if (loginpage.logoutBtnDisplayed()) {
+					Assert.assertTrue("Login status true", loginpage.logoutBtnDisplayed());
+					loginpage.clickOnLogoutBtn();
+					loginpage.clickOnLogiAsideBtn();
+					continue;
+				}
+
+			} catch (Exception e) {
+				System.out.println("Exception occurred while logging in: " + e.getMessage());
+				Assert.assertFalse("Login status true",false);
+				continue; 
+			}
+
+		}
+
+	}
+	
 
 }

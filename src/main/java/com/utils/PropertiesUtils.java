@@ -13,10 +13,9 @@ public class PropertiesUtils {
 		//String configFilePath = System.getProperty("user.dir") + "/config.properties";
 		
 		Properties prop = new Properties();
-		File fileprop = new File(System.getProperty("user.dir")+"\\src\\test\\resources\\config\\config.properties");
-		FileInputStream fis = new FileInputStream(fileprop);
+		FileInputStream ip = new FileInputStream("./src/test/resources/config/config.properties");
 		try {
-			prop.load(fis);
+			prop.load(ip);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

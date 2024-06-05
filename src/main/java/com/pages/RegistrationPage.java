@@ -59,7 +59,7 @@ public class RegistrationPage {
 	
 	//links
 	private By loginPageLink = By.xpath("//a[contains(text(),'login page')]");
-	private By privacyLink = By.cssSelector("a.agree");
+	private By privacyLink = By.cssSelector("a.agree1");
 	private By privacyWindowText = By.xpath("//h4[contains(text(),'Privacy Policy')]");
 	private By closePrivacyModel = By.cssSelector("button.close");
 	
