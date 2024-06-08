@@ -38,7 +38,10 @@ public class SearchPage {
 		util.waitForElementPresence(searchBtn, TimeUtil.DEFAULT_TIME_OUT);
 		return util.getElementsTextList(searchResultList);
 	}
-	
+
+	public void test(){
+		//added from git
+	}
 	
 	
 	
