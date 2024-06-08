@@ -5,19 +5,17 @@ import java.util.List;
 import java.util.Map;
 
 import org.junit.Assert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+
 import com.factory.DriverFactory;
-import com.pages.LoginPage;
 import com.pages.RegistrationPage;
 import com.utils.AppConstants;
 import com.utils.GenerateRandomString;
 import com.utils.TimeUtil;
 
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
-import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 
 public class RegistrationSteps {
 

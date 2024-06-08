@@ -1,5 +1,8 @@
 package com.utils;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class AppConstants {
 	
 	public static final String FIRST_NAME_ERROR_LABEL = "First Name must be between 1 and 32 characters!";
@@ -25,6 +28,8 @@ public class AppConstants {
 	public static final String LOGIN_PAGE_TITLE = "Account Login";
 
 	public static final String LOGIN_COLOR_LINK = "rgba(35, 161, 209, 1)";
+
+	public static final List<String> MACBOOK_SEARCH_RESULTS = Arrays.asList("MacBook", "MacBook Air", "MacBook Pro");
 	
 	
 	

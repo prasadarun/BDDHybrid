@@ -22,8 +22,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.factory.DriverFactory;
 
-import io.cucumber.java.Scenario;
-
 public class ElementUtils {
 
 	private WebDriver driver;
@@ -128,7 +126,7 @@ public class ElementUtils {
 		List<String> eleTextList = new ArrayList<String>();
 
 		for (WebElement e : eleList) {
-			String text = e.getText();
+			String text = e.getText().trim();
 			eleTextList.add(text);
 		}
 

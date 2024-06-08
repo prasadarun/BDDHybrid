@@ -59,23 +59,21 @@ public class LoginPage {
 
 	public Map<String, String> toArray(Object[][] testData) {
 		Map<String, String> mapValues = new HashMap();
-		
-		
+
 		for (int i = 1; i < testData.length; i++) {
-		    Object[] row = testData[i];
-		    if (row.length >= 3) {
-		        String key = (String) row[0]; // Assuming the first element is the key
-		        String value = (String) row[1]; // Assuming the second element is the value
-		       
-		        mapValues.put(key, value);
-		    }
+			Object[] row = testData[i];
+			if (row.length >= 3) {
+				String key = (String) row[0]; // Assuming the first element is the key
+				String value = (String) row[1]; // Assuming the second element is the value
+
+				mapValues.put(key, value);
+			}
 		}
 
 
 		// Added sample text from git
         
         System.out.println(mapValues);
-
 		return mapValues;
 	}
 

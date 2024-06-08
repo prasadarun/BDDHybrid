@@ -10,11 +10,11 @@ import io.cucumber.junit.CucumberOptions;
 		features="src/test/resources",
 		glue={"stepdefinations","com.hooks"},
 		plugin = {"pretty", "html:target/cucumber-reports"},
-		tags = "@ExcelDataLogin",
+		tags = "@searchMacBook",
 		publish = true, // Set to true to publish results
-		monochrome = false, // gives the colur output of steps in console during false value 
+		monochrome = false, // gives the colour output of steps in console during false value 
 		dryRun = false,  // quick check about having all features files defined with steps 
-		stepNotifications = false
+		stepNotifications = false  // don't see any difference
 		)
 public class MyRunner {
 	

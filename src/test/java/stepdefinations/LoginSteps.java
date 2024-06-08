@@ -125,23 +125,20 @@ public class LoginSteps {
 
 			} catch (Exception e) {
 				System.out.println("Exception occurred while logging in: " + e.getMessage());
-				Assert.assertFalse("Login status true",false);
-				continue; 
+				Assert.assertFalse("Login status true", false);
+				continue;
 			}
 
 		}
 
 	}
-	
-	@Given("I have valid credentials in Excel sheet {string}")
-    public void loadCredentialsFromExcel(String sheetName) throws Exception {
-        // Specify the path to your Excel sheet
-        // Use ExcelUtility to read data from Excel sheet
-		dbuserpwdValue = loginpage.toArray(ReadExcelFile.getTestData(sheetName));
-        
 
-        
-    }
-	
+	@Given("I have valid credentials in Excel sheet {string}")
+	public void loadCredentialsFromExcel(String sheetName) throws Exception {
+		// Specify the path to your Excel sheet
+		// Use ExcelUtility to read data from Excel sheet
+		dbuserpwdValue = loginpage.toArray(ReadExcelFile.getTestData(sheetName));
+
+	}
 
 }
