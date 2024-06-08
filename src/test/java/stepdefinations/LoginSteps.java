@@ -11,6 +11,7 @@ import org.openqa.selenium.WebDriver;
 import com.pages.LoginPage;
 import com.utils.FertchDataFromMySQL;
 import com.utils.PropertiesUtils;
+import com.utils.ReadExcelFile;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -131,6 +132,16 @@ public class LoginSteps {
 		}
 
 	}
+	
+	@Given("I have valid credentials in Excel sheet {string}")
+    public void loadCredentialsFromExcel(String sheetName) throws Exception {
+        // Specify the path to your Excel sheet
+        // Use ExcelUtility to read data from Excel sheet
+		dbuserpwdValue = loginpage.toArray(ReadExcelFile.getTestData(sheetName));
+        
+
+        
+    }
 	
 
 }

@@ -41,3 +41,9 @@ Feature: Login Functionality
   Scenario: User logs in using credentials from a database
     Given I have a valid database connection with "<user>" "<password>" "<account>" "<query>"
     And enter the fetched "<username>" and "<password>" in login page and check the login status
+    
+    
+ @ExcelDataLogin
+   Scenario: Login with valid credentials from Excel
+    Given I have valid credentials in Excel sheet "lgn"
+    And enter the fetched "<username>" and "<password>" in login page and check the login status
